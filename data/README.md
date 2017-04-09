@@ -1,1 +1,1 @@
-## Dir to handle shapenet
+## Dir contains scripts to  handle data 
