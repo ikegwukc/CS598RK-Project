@@ -21,7 +21,7 @@ for file_path, out_dir in zip(file_paths, out_dirs):
         #size needs to be (100, 32, 32, 32, 1)
         #when using default -d 256 size is (100, 256, 256, 256, 1)
         # when using -d 32 size is 
-        bashCommand = "/home/jarvis/Downloads/binvox %s -d 32" %_file
+        bashCommand = "/home/jarvis/Downloads/binvox %s -e -d 32" %_file
         process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
         process.communicate()  # Wait until binvox finished
         shutil.move(_file.replace('.obj', '.binvox'), out_dir+new_name)  # copy file to new dir
