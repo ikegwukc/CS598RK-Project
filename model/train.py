@@ -6,7 +6,7 @@ import dataset
 import time
 import os
 import progressbar
-
+import time
 
 # ### Setting params, dirs, and loading data
 
@@ -101,11 +101,12 @@ try:
                 sess.run(opt_D, feed_dict={x:voxels, z:batch_z, train:True})
 
                 with open("out/loss.csv", 'a+') as f:
+                    f.write('Current Time:' + time.strftime("%c") + " ")
                     batch_loss_G = sess.run(loss_G, feed_dict={z:batch_z, train:False})
                     batch_loss_D = sess.run(loss_D, feed_dict={x:voxels, z:batch_z, train:False})
                     msg = "{0}, {1}, {2:.8f}, {3:.8f}".format(epoch, i, batch_loss_G, batch_loss_D)
                     f.write(msg+'\n')
-                    print msg
+                    #print msg
 
             batch_z = np.random.uniform(-1, 1, [batch_size, z_size]).astype(np.float32)
             voxels = sess.run(x_, feed_dict={z:batch_z})
