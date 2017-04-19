@@ -11,6 +11,7 @@ import progressbar
 
 # ### Setting params, dirs, and loading data
 
+print 'Setting params, dirs, and loading data'
 # In[2]:
 try:
     paths = ['./out/', './params']
@@ -31,6 +32,8 @@ try:
 
     # In[3]:
 
+    print 'Creating Placeholders...'
+
     x = tf.placeholder(tf.float32, [batch_size, 32, 32, 32, 1])
     z = tf.placeholder(tf.float32, [batch_size, z_size])
     train = tf.placeholder(tf.bool)
@@ -41,7 +44,7 @@ try:
 
     # In[4]:
 
-
+    print 'Create Generator and Discriminator...'
     G = model.Generator(z_size)
     D = model.Discriminator()
     x_ = G(z)
@@ -49,6 +52,7 @@ try:
 
     y = D(x, train)
 
+    print 'Setting up labels, loss functions, other parameters'
     label_real = np.zeros([batch_size, 2], dtype=np.float32)
     label_fake = np.zeros([batch_size, 2], dtype=np.float32)
     label_real[:, 0] = 1
@@ -71,6 +75,7 @@ try:
 
     # In[ ]:
 
+    print 'Setting up Progressbar'
     progress = progressbar.ProgressBar()
 
 
@@ -78,6 +83,7 @@ try:
 
     # In[ ]:
 
+    print 'Running Voxel-dcgan'
     config = tf.ConfigProto()
     config.gpu_options.allow_growth = True
 
@@ -99,7 +105,7 @@ try:
                     batch_loss_G = sess.run(loss_G, feed_dict={z:batch_z, train:False})
                     batch_loss_D = sess.run(loss_D, feed_dict={x:voxels, z:batch_z, train:False})
                     msg = "{0}, {1}, {2:.8f}, {3:.8f}".format(epoch, i, batch_loss_G, batch_loss_D)
-                    print f.write(msg+'\n')
+                    f.write(msg+'\n')
                     print msg
 
             batch_z = np.random.uniform(-1, 1, [batch_size, z_size]).astype(np.float32)
