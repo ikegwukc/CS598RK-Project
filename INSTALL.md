@@ -13,3 +13,12 @@ Useful for viewing binvox files
 ## Other Things
 - meshlab is useful for viewing .stl, .obj files, etc. ``` sudo apt-get install meshlab```
 
+
+
+## Google Cloud
+Datalab basically uses ipython notebooks and can use gpus.
+To start:
+- Enable Google Cloud Shell
+-  
+
+https://cloud.google.com/datalab/docs/quickstarts
