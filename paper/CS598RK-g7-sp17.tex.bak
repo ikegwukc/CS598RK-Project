@@ -1,0 +1,141 @@
+\documentclass{sigchi}
+
+% Use this command to override the default ACM copyright statement (e.g. for preprints). 
+% Consult the conference website for the camera-ready copyright statement.
+
+
+%% EXAMPLE BEGIN -- HOW TO OVERRIDE THE DEFAULT COPYRIGHT STRIP -- (July 22, 2013 - Paul Baumann)
+% \toappear{Permission to make digital or hard copies of all or part of this work for personal or classroom use is 	granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for components of this work owned by others than ACM must be honored. Abstracting with credit is permitted. To copy otherwise, or republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee. Request permissions from permissions@acm.org. \\
+% {\emph{CHI'14}}, April 26--May 1, 2014, Toronto, Canada. \\
+% Copyright \copyright~2014 ACM ISBN/14/04...\$15.00. \\
+% DOI string from ACM form confirmation}
+%% EXAMPLE END -- HOW TO OVERRIDE THE DEFAULT COPYRIGHT STRIP -- (July 22, 2013 - Paul Baumann)
+
+
+% Arabic page numbers for submission. 
+% Remove this line to eliminate page numbers for the camera ready copy
+% \pagenumbering{arabic}
+
+
+% Load basic packages
+\usepackage{balance}  % to better equalize the last page
+\usepackage{graphics} % for EPS, load graphicx instead
+\usepackage{times}    % comment if you want LaTeX's default font
+\usepackage{url}      % llt: nicely formatted URLs
+
+% llt: Define a global style for URLs, rather that the default one
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\bf\ttfamily}}}
+\makeatother
+\urlstyle{leo}
+
+
+% To make various LaTeX processors do the right thing with page size.
+\def\pprw{8.5in}
+\def\pprh{11in}
+\special{papersize=\pprw,\pprh}
+\setlength{\paperwidth}{\pprw}
+\setlength{\paperheight}{\pprh}
+\setlength{\pdfpagewidth}{\pprw}
+\setlength{\pdfpageheight}{\pprh}
+
+% Make sure hyperref comes last of your loaded packages, 
+% to give it a fighting chance of not being over-written, 
+% since its job is to redefine many LaTeX commands.
+\usepackage[pdftex]{hyperref}
+\hypersetup{
+pdftitle={SIGCHI Conference Proceedings Format},
+pdfauthor={LaTeX},
+pdfkeywords={SIGCHI, proceedings, archival format},
+bookmarksnumbered,
+pdfstartview={FitH},
+colorlinks,
+citecolor=black,
+filecolor=black,
+linkcolor=black,
+urlcolor=black,
+breaklinks=true,
+}
+
+% create a shortcut to typeset table headings
+\newcommand\tabhead[1]{\small\textbf{#1}}
+
+
+% End of preamble. Here it comes the document.
+\begin{document}
+
+\title{Using Weakly Trained GANs to produce 3D Models}
+
+\numberofauthors{2}
+\author{
+  \alignauthor Kelechi M. Ikegwu\(^1\); Hsuan-Yu Chen\(^2\); Jiayi Cao\(^3\); Smit Desai\(^4\)\\
+    \affaddr{Illinois Informatics Institute\(^1\); Department of Computer Science\(^{2,3}\); School of Information Sciences\(^4\)}\\
+    \email{ikegwu2@illinois.edu\(^1\); hychen2@illinois.edu\(^2\); jcao7@illinois.edu\(^3\); smitad2@illinois.edu\(^4\)}\\
+  \alignauthor Ranjitha Kumar\\
+    \affaddr{Department of Computer Science}\\
+    \email{ ranjitha@illinois.edu}\\
+}
+
+\maketitle
+
+\begin{abstract}
+Generative Adversarial Networks (GAN) have become the de-facto standard for generative models. However large amounts of data are required to achieve excellent performance which makes GANs challenging to apply to sparse datasets. In order to utilize GANs with sparse datasets we propose using weakly training GANs to produce generated models which we then use to augment existing data. In this paper we utilize 2 classes of a popular 3D dataset called 3DShapeNet to train on. Next data augmentation is formed on the original models, lastly we conduct a study to assess our models on Amazon Mechanical Turk.
+\end{abstract}
+
+\keywords{
+	General Adversarial Networks; 3D-Models; Data Creation; Data Augmentation \newline
+	%\textcolor{red}{Optional section to be included in your final version,  but strongly encouraged.}
+}
+
+\category{H.5.m.}{Information Interfaces and Presentation (e.g. HCI)}{Miscellaneous}
+\category{I.3.m.}{}{Miscellaneous}
+\category{1.4.m.}{Image Processing and Computer Vision}{Miscellaneous}
+\section{Introduction}
+
+They’re a multitude of application areas where generative models are promising method to solving certain problems. Generative Adversarial Networks (GAN) \cite{NIPS2014_5423} is a particular model  which is becoming the de-facto standard for generative models. However these models generally require a lot of data to generate sufficient results.
+
+As an attempt to solve this problem we propose using the latent spaces from weakly trained GANs with sparse datasets to augment existing data. In the subsequent sections we frame our work with respect research that has been conducted with GANs, we discuss about our methodology for transforming data, produced models, and perform an evaluation of our produced models.
+
+\section{Related Works}
+
+The foundation of this research is based on prior work. We use a rich 3D model repository called ShapeNet \cite{shapenet2015} which contains a multitude of semantic categories organized under WordNet’s taxonomy \cite{Miller:1995:WLD:219717.219748}. In particular we utilize the table and mug categories of ShapeNet. 
+
+Hychen talk about binvox and why voxel format is used with voxnet paper
+
+For our model we try to learn the probabilistic latent space of tables and chairs using Wu. J, Zhang. C, Xue. T, et. al’s work in \cite{3dgan}. All of the parameters are the same however, the generator \(G\) produces 32 x 32 x 32 object, our discriminator  \(D\)only accepts models with the size of 32 x 32 x 32,  the learning rate is .003. 
+
+
+\section{Methodology}
+
+\section{Generated Results}
+
+Your paper's title, authors and affiliations should run across the
+full width of the page in a single column 17.8 cm (7 in.) wide.  The
+title should be in Helvetica 18-point bold; use Arial if Helvetica is
+not available.  Authors' names should be in Times Roman 12-point bold,
+and affiliations in Times Roman 12-point.  For more than three authors,
+you may have to place some address information in a footnote, or in a named
+section at the end of your paper. Please use full international addresses and
+telephone dialing prefixes.  Leave one 10-pt line of white space below the last
+line of affiliations.
+
+
+\section{Evaluation}
+
+
+
+\section{Conclusion \& Future Work}
+
+
+%\section{Acknowledgments}
+\balance
+
+\section{References}
+%References must be the same font size as other body text.
+% REFERENCES FORMAT
+% References must be the same font size as other body text.
+
+\bibliographystyle{acm-sigchi}
+\bibliography{ref}
+\end{document}

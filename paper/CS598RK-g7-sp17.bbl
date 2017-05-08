@@ -1,0 +1,30 @@
+\begin{thebibliography}{1}
+
+\bibitem{shapenet2015}
+Chang, A.~X., Funkhouser, T., Guibas, L., Hanrahan, P., Huang, Q., Li, Z.,
+  Savarese, S., Savva, M., Song, S., Su, H., Xiao, J., Yi, L., and Yu, F.
+\newblock {ShapeNet: An Information-Rich 3D Model Repository}.
+\newblock Tech. Rep. arXiv:1512.03012 [cs.GR], Stanford University ---
+  Princeton University --- Toyota Technological Institute at Chicago, 2015.
+
+\bibitem{NIPS2014_5423}
+Goodfellow, I., Pouget-Abadie, J., Mirza, M., Xu, B., Warde-Farley, D., Ozair,
+  S., Courville, A., and Bengio, Y.
+\newblock Generative adversarial nets.
+\newblock In {\em Advances in Neural Information Processing Systems 27},
+  Z.~Ghahramani, M.~Welling, C.~Cortes, N.~D. Lawrence, and K.~Q. Weinberger,
+  Eds. Curran Associates, Inc., 2014, 2672--2680.
+
+\bibitem{Miller:1995:WLD:219717.219748}
+Miller, G.~A.
+\newblock Wordnet: A lexical database for english.
+\newblock {\em Commun. ACM 38}, 11 (Nov. 1995), 39--41.
+
+\bibitem{3dgan}
+Wu, J., Zhang, C., Xue, T., Freeman, W.~T., and Tenenbaum, J.~B.
+\newblock Learning a probabilistic latent space of object shapes via 3d
+  generative-adversarial modeling.
+\newblock In {\em Advances in Neural Information Processing Systems} (2016),
+  82--90.
+
+\end{thebibliography}
