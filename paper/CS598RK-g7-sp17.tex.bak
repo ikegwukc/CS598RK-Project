@@ -105,15 +105,15 @@ As an attempt to solve this problem we propose using the latent spaces from weak
 The foundation of this research is based on prior work of several key papers. We use a rich 3D model repository called ShapeNet \cite{shapenet2015} which contains a multitude of semantic categories organized under WordNet’s taxonomy \cite{Miller:1995:WLD:219717.219748}. In particular, we utilize the table and mug categories of ShapeNet. 
 
 
-We chose voxel format to efficiently dealing with large amounts features from point cloud data. Similar methodology can be found in Daniel Maturana and Sebastian Scherer’s work in \cite{VoxNet}, they propose VoxNet, an architecture by integrating a volumetric Occupancy Grid representation with a supervised 3D Convolutional Neural Network (3D CNN). 
+We used voxel models to efficiently deal with large amounts features from point cloud data. Similar methodology can be found in Daniel Maturana and Sebastian Scherer’s work in \cite{Maturana–2015–6018}, they propose VoxNet, an architecture by integrating a Volumetric Occupancy Grid representation with a supervised 3D Convolutional Neural Network (3D CNN). 
 
-For our model we try to learn the probabilistic latent space of tables and chairs using Wu. J, Zhang. C, Xue. T, et. al’s work in \cite{3dgan}. All of the parameters are the same however, the generator \(G\) produces 32 x 32 x 32 object, our discriminator  \(D\)only accepts models with the size of 32 x 32 x 32,  the learning rate is .003.
+For our model we try to learn the probabilistic latent space of tables and chairs using Wu. J, Zhang. C, Xue. T, et. al’s work in \cite{3dgan}. All of the parameters are the same however, the generator \(G\) produces 32 x 32 x 32 object, our discriminator  \(D\) only accepts models with the size of 32 x 32 x 32,  the learning rate is .003.
 
 
 \section{Methodology}
-After obtaining the weakly trained models, we observe they possess some degree of trained models’ characteristics but yet incomplete shape. Main issue is that most models have disconnected components and scattering voxel cubes in the 3D grid space due to the lack of training data. Therefore we undergo a series of morphology techniques to transform the models.
+After obtaining the weakly trained models, we observe they possess some degree of orginal models’ characteristics but yet incomplete shape. The main issue is that most models have disconnected components and scattered voxel cubes in the 3D grid space due to the lack of training data. Therefore we undergo a series of morphology techniques to transform the models.
 
-First step is extracting the main component of the model by performing a depth-first search algorithm to get the largest connected component in the space.
+The first step was to extract the main component of the model by utilizing a depth-first search algorithm to get the largest connected component in the space.
 
 After that, we notice there are holes in the surfaces of many models, therefore we used hole-filling algorithm to spot the holes and fix them. The algorithm used consists in invading the complementary of the shapes in input from the outer boundary of the image, using binary dilations. Holes are not connected to the boundary and are therefore not invaded. The result is the complementary subset of the invaded region.
 
@@ -122,7 +122,9 @@ We then take to-be-altered models from 3DShapeNet and apply a dilation algorithm
 
 \section{Generated Results}
 
-Figure \ref{fig:table_results} shows examples of good results. We can see that the augmented part of model preserve some characteristic of the model. For example, some table’s have drawers or some other special design added to the table. However, there are also bad results where random cubes added to the original model (see Figure \ref{fig:bad_results}). 
+Figure \ref{fig:table_results} shows examples of good results. We can see that the augmented part of model preserve some characteristics of the model. For example, some table’s have drawers or some other special design added to the table. However, there are also bad results where random voxel cubes are added to the original model (see Figure \ref{fig:bad_results}). 
+
+We also performing image dilation of the model using random noise to confirm 
 
 \begin{figure}
 \includegraphics[width=0.4\textwidth]{figs/table_results.png}
@@ -155,7 +157,7 @@ In addition to this we plan to share our results of training on our generated mo
 
 
 \section{Acknowledgments}
-We'd like to thank Ranjitha Kumar for supplying us with necessary reshardware
+We'd like to thank Dr. Ranjitha Kumar for supplying us with necessary resources to train our models and also for her advice and mentorship.
 \balance
 
 
