@@ -20,6 +20,7 @@
 % Load basic packages
 \usepackage{balance}  % to better equalize the last page
 \usepackage{graphics} % for EPS, load graphicx instead
+\usepackage{graphicx}  % include figures
 \usepackage{times}    % comment if you want LaTeX's default font
 \usepackage{url}      % llt: nicely formatted URLs
 
@@ -80,7 +81,8 @@ breaklinks=true,
 \maketitle
 
 \begin{abstract}
-Generative Adversarial Networks (GAN) have become the de-facto standard for generative models. However large amounts of data are required to achieve excellent performance which makes GANs challenging to apply to sparse datasets. In order to utilize GANs with sparse datasets we propose using weakly training GANs to produce generated models which we then use to augment existing data. In this paper we utilize 2 classes of a popular 3D dataset called 3DShapeNet to train on. Next data augmentation is formed on the original models, lastly we conduct a study to assess our models on Amazon Mechanical Turk.
+Generative Adversarial Networks (GAN) have become the de-facto standard for generative models. However large amounts of data are required to achieve excellent performance which makes GANs challenging to apply to sparse datasets. In order to utilize GANs with sparse datasets we propose using weakly training GANs to produce models which we then use to augment existing data. In this paper we utilize 2 classes of a popular 3D dataset called 3DShapeNet to train on. Next data augmentation is formed on the original models, lastly we conduct a study to assess our models on Amazon Mechanical Turk.
+
 \end{abstract}
 
 \keywords{
@@ -89,53 +91,74 @@ Generative Adversarial Networks (GAN) have become the de-facto standard for gene
 }
 
 \category{H.5.m.}{Information Interfaces and Presentation (e.g. HCI)}{Miscellaneous}
-\category{I.3.m.}{}{Miscellaneous}
-\category{1.4.m.}{Image Processing and Computer Vision}{Miscellaneous}
+\category{I.2.m.}{Artificial Intelligence}{Miscellaneous}
+\category{I.4.m.}{Image Processing and Computer Vision}{Miscellaneous}
+
 \section{Introduction}
 
-They’re a multitude of application areas where generative models are promising method to solving certain problems. Generative Adversarial Networks (GAN) \cite{NIPS2014_5423} is a particular model  which is becoming the de-facto standard for generative models. However these models generally require a lot of data to generate sufficient results.
+They’re a multitude of application areas where generative models are a promising method for solving certain problems. Generative Adversarial Networks (GAN) \cite{NIPS2014_5423} is a particular model  which is becoming the de-facto standard for generative models. However these models generally require a lot of data to generate sufficient results.
 
-As an attempt to solve this problem we propose using the latent spaces from weakly trained GANs with sparse datasets to augment existing data. In the subsequent sections we frame our work with respect research that has been conducted with GANs, we discuss about our methodology for transforming data, produced models, and perform an evaluation of our produced models.
+As an attempt to solve this problem we propose using the latent spaces from weakly trained GANs with sparse datasets to augment existing data. In the subsequent sections we frame our work with respect to research that has been conducted with GANs, we discuss about our methodology for performing transformations to our data, producing models, and performing an evaluation of our produced models.
 
 \section{Related Works}
 
-The foundation of this research is based on prior work. We use a rich 3D model repository called ShapeNet \cite{shapenet2015} which contains a multitude of semantic categories organized under WordNet’s taxonomy \cite{Miller:1995:WLD:219717.219748}. In particular we utilize the table and mug categories of ShapeNet. 
+The foundation of this research is based on prior work of several key papers. We use a rich 3D model repository called ShapeNet \cite{shapenet2015} which contains a multitude of semantic categories organized under WordNet’s taxonomy \cite{Miller:1995:WLD:219717.219748}. In particular, we utilize the table and mug categories of ShapeNet. 
 
-Hychen talk about binvox and why voxel format is used with voxnet paper
 
-For our model we try to learn the probabilistic latent space of tables and chairs using Wu. J, Zhang. C, Xue. T, et. al’s work in \cite{3dgan}. All of the parameters are the same however, the generator \(G\) produces 32 x 32 x 32 object, our discriminator  \(D\)only accepts models with the size of 32 x 32 x 32,  the learning rate is .003. 
+We chose voxel format to efficiently dealing with large amounts features from point cloud data. Similar methodology can be found in Daniel Maturana and Sebastian Scherer’s work in \cite{VoxNet}, they propose VoxNet, an architecture by integrating a volumetric Occupancy Grid representation with a supervised 3D Convolutional Neural Network (3D CNN). 
+
+For our model we try to learn the probabilistic latent space of tables and chairs using Wu. J, Zhang. C, Xue. T, et. al’s work in \cite{3dgan}. All of the parameters are the same however, the generator \(G\) produces 32 x 32 x 32 object, our discriminator  \(D\)only accepts models with the size of 32 x 32 x 32,  the learning rate is .003.
 
 
 \section{Methodology}
+After obtaining the weakly trained models, we observe they possess some degree of trained models’ characteristics but yet incomplete shape. Main issue is that most models have disconnected components and scattering voxel cubes in the 3D grid space due to the lack of training data. Therefore we undergo a series of morphology techniques to transform the models.
+
+First step is extracting the main component of the model by performing a depth-first search algorithm to get the largest connected component in the space.
+
+After that, we notice there are holes in the surfaces of many models, therefore we used hole-filling algorithm to spot the holes and fix them. The algorithm used consists in invading the complementary of the shapes in input from the outer boundary of the image, using binary dilations. Holes are not connected to the boundary and are therefore not invaded. The result is the complementary subset of the invaded region.
+
+We then take to-be-altered models from 3DShapeNet and apply a dilation algorithm to augment the models with the hole-filled weakly trained models as a space constraint. We will then obtain augmented tables with certain features from the weakly trained models.
+
 
 \section{Generated Results}
 
-Your paper's title, authors and affiliations should run across the
-full width of the page in a single column 17.8 cm (7 in.) wide.  The
-title should be in Helvetica 18-point bold; use Arial if Helvetica is
-not available.  Authors' names should be in Times Roman 12-point bold,
-and affiliations in Times Roman 12-point.  For more than three authors,
-you may have to place some address information in a footnote, or in a named
-section at the end of your paper. Please use full international addresses and
-telephone dialing prefixes.  Leave one 10-pt line of white space below the last
-line of affiliations.
+Figure \ref{fig:table_results} shows examples of good results. We can see that the augmented part of model preserve some characteristic of the model. For example, some table’s have drawers or some other special design added to the table. However, there are also bad results where random cubes added to the original model (see Figure \ref{fig:bad_results}). 
 
+\begin{figure}
+\includegraphics[width=0.4\textwidth]{figs/table_results.png}
+\centering
+\caption{The top row is the original table. Second row is the GAN produced model. The third row is our augmented table.}
+\label{fig:table_results}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=0.4\textwidth]{figs/bad_results.png}
+\centering
+\caption{On the left is the original model. On the right is the poorly augmented model.}
+\label{fig:bad_results}
+\end{figure}
 
 \section{Evaluation}
+
+One of the most important factors for determining how good the results are would be to find out how visually different the generated models are from the original models. For that purpose, we ran some tests on Amazon Mechanical Turk (AMT) where we asked users to rate the dissimilarity between the generated model and the original model on a 5 point Likert Scale. For the purpose of this experiment we chose to run our tests with tables as we believed that dissimilarities between tables would be easily discernible for the users. 
+We recruited 30 workers for this experiment and we paid them \$0.05 per HIT. Three examples were provided to the workers for the sake of their understanding of the task. 
+On an average, the workers rated the dissimilarity between the generated and the original model as 3.2 (fairly significant). Along with that 27/30 workers perceived the tables to be practically usable. 
 
 
 
 \section{Conclusion \& Future Work}
+To summarize we propose a method for performing data augmentation with 3D voxelized models. We utilized 2 classes from ShapeNet with a sparse number of examples. We then perform an evaluation on AMT.
+
+In the future we plan to explore more sophisticated techniques for generating more data. For example we plan to explore morphing models directly from ShapeNet. 
+
+In addition to this we plan to share our results of training on our generated models to determine if our model learns the latent space of better. We also plan to perform a comparative analysis against training with data from sophisticated morphing techniques and augmented models using our methodology.
 
 
-%\section{Acknowledgments}
+\section{Acknowledgments}
+We'd like to thank Ranjitha Kumar for supplying us with necessary reshardware
 \balance
 
-\section{References}
-%References must be the same font size as other body text.
-% REFERENCES FORMAT
-% References must be the same font size as other body text.
 
 \bibliographystyle{acm-sigchi}
-\bibliography{ref}
+\bibliography{CS598RK-g7-sp17}
 \end{document}

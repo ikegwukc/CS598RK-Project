@@ -15,6 +15,13 @@ Goodfellow, I., Pouget-Abadie, J., Mirza, M., Xu, B., Warde-Farley, D., Ozair,
   Z.~Ghahramani, M.~Welling, C.~Cortes, N.~D. Lawrence, and K.~Q. Weinberger,
   Eds. Curran Associates, Inc., 2014, 2672--2680.
 
+\bibitem{Maturana–2015–6018}
+Maturana, D., and Scherer, S.
+\newblock Voxnet: A 3d convolutional neural network for real-time object
+  recognition.
+\newblock In {\em IEEE/RSJ International Conference on Intelligent Robots and
+  Systems} (Pittsburgh, PA, September 2015).
+
 \bibitem{Miller:1995:WLD:219717.219748}
 Miller, G.~A.
 \newblock Wordnet: A lexical database for english.
