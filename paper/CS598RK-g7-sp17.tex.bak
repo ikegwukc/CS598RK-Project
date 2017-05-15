@@ -64,6 +64,7 @@ breaklinks=true,
 \newcommand\tabhead[1]{\small\textbf{#1}}
 
 
+%\toappear{Permission to make digital or hard copies of all or part of this work for personal or classroom use is 	granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for components of this work owned by others than ACM must be honored. Abstracting with credit is permitted. To copy otherwise, or republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee. Request permissions from permissions@acm.org.}
 % End of preamble. Here it comes the document.
 \begin{document}
 
@@ -77,7 +78,7 @@ breaklinks=true,
   \alignauthor Hsuan-Yu Chen\\
     \affaddr{Department of Computer Science}\\
     \email{hychen2@illinois.edu}\\
-  \alignauthor Ranjitha Kumar\\
+  \alignauthor Jiayi Cao\\
     \affaddr{Department of Computer Science}\\
     \email{ jcao7@illinois.edu}\\
   \alignauthor Smit Desai\\
@@ -98,6 +99,7 @@ breaklinks=true,
 %}
 
 \maketitle
+
 
 \begin{abstract}
 Generative Adversarial Networks (GAN) have become the de-facto standard for generative models. However large amounts of data are required to achieve excellent performance which makes GANs challenging to apply to sparse datasets. In order to utilize GANs with sparse datasets we propose using weakly trained GANs to produce models which we then use to augment existing data. For this study we utilize 2 classes of a popular 3D dataset called 3DShapeNet to train on. Next data augmentation is performed on the original models using our proposed method, lastly we conduct a study to assess our models on Amazon Mechanical Turk.
