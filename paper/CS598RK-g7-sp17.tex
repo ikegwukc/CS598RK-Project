@@ -81,7 +81,7 @@ breaklinks=true,
 \maketitle
 
 \begin{abstract}
-Generative Adversarial Networks (GAN) have become the de-facto standard for generative models. However large amounts of data are required to achieve excellent performance which makes GANs challenging to apply to sparse datasets. In order to utilize GANs with sparse datasets we propose using weakly training GANs to produce models which we then use to augment existing data. In this paper we utilize 2 classes of a popular 3D dataset called 3DShapeNet to train on. Next data augmentation is formed on the original models, lastly we conduct a study to assess our models on Amazon Mechanical Turk.
+Generative Adversarial Networks (GAN) have become the de-facto standard for generative models. However large amounts of data are required to achieve excellent performance which makes GANs challenging to apply to sparse datasets. In order to utilize GANs with sparse datasets we propose using weakly trained GANs to produce models which we then use to augment existing data. For this study we utilize 2 classes of a popular 3D dataset called 3DShapeNet to train on. Next data augmentation is performed on the original models using our proposed method, lastly we conduct a study to assess our models on Amazon Mechanical Turk.
 
 \end{abstract}
 
@@ -96,7 +96,7 @@ Generative Adversarial Networks (GAN) have become the de-facto standard for gene
 
 \section{Introduction}
 
-They’re a multitude of application areas where generative models are a promising method for solving certain problems. Generative Adversarial Networks (GAN) \cite{NIPS2014_5423} is a particular model  which is becoming the de-facto standard for generative models. However these models generally require a lot of data to generate sufficient results.
+They’re a multitude of application areas where generative models are a promising method for solving certain problems. Generative Adversarial Networks (GAN) \cite{NIPS2014_5423} is a particular model  which is becoming the standard for generative models. However these models generally require a lot of data to generate sufficient results.
 
 As an attempt to solve this problem we propose using the latent spaces from weakly trained GANs with sparse datasets to augment existing data. In the subsequent sections we frame our work with respect to research that has been conducted with GANs, we discuss about our methodology for performing transformations to our data, producing models, and performing an evaluation of our produced models.
 
@@ -115,7 +115,7 @@ After obtaining the weakly trained models, we observe they possess some degree o
 
 The first step was to extract the main component of the model by utilizing a depth-first search algorithm to get the largest connected component in the space.
 
-After that, we notice there are holes in the surfaces of many models, therefore we used hole-filling algorithm to spot the holes and fix them. The algorithm used consists in invading the complementary of the shapes in input from the outer boundary of the image, using binary dilations. Holes are not connected to the boundary and are therefore not invaded. The result is the complementary subset of the invaded region.
+After that, we notice there are holes in the surfaces of many models, therefore we used hole-filling algorithm to spot the holes and fix them. The algorithm used consists of invading the complementary of the shapes in input from the outer boundary of the image, using binary dilations. Holes are not connected to the boundary and are therefore not invaded. The result is the complementary subset of the invaded region.
 
 We then take to-be-altered models from 3DShapeNet and apply a dilation algorithm to augment the models with the hole-filled weakly trained models as a space constraint. We will then obtain augmented tables with certain features from the weakly trained models.
 
@@ -124,7 +124,7 @@ We then take to-be-altered models from 3DShapeNet and apply a dilation algorithm
 
 Figure \ref{fig:table_results} shows examples of good results. We can see that the augmented part of model preserve some characteristics of the model. For example, some table’s have drawers or some other special design added to the table. However, there are also bad results where random voxel cubes are added to the original model (see Figure \ref{fig:bad_results}). 
 
-We also performing image dilation using random noise to confirm that our GAN was is producing useful results (see Figure \ref{fig:table_random} )
+We also performing image dilation using random noise to confirm that our GAN  is producing useful results (see Figure \ref{fig:table_random} ).
 
 \begin{figure}
 \includegraphics[width=0.4\textwidth]{figs/table_results.png}
@@ -143,7 +143,7 @@ We also performing image dilation using random noise to confirm that our GAN was
 \begin{figure}
 \includegraphics[width=0.4\textwidth]{figs/table_random.png}
 \centering
-\caption{We vary the threshold of confidence.}
+\caption{We vary the threshold of confidence for random noise.}
 \label{fig:table_random}
 \end{figure}
 
