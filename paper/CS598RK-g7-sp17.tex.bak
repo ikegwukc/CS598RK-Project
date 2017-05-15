@@ -18,6 +18,7 @@
 
 
 % Load basic packages
+\usepackage{textcomp}
 \usepackage{balance}  % to better equalize the last page
 \usepackage{graphics} % for EPS, load graphicx instead
 \usepackage{graphicx}  % include figures
@@ -68,15 +69,33 @@ breaklinks=true,
 
 \title{Utilizing Weakly Trained GANs to produce 3D Models}
 
-\numberofauthors{2}
+\numberofauthors{5}
 \author{
-  \alignauthor Kelechi M. Ikegwu\(^1\); Hsuan-Yu Chen\(^2\); Jiayi Cao\(^3\); Smit Desai\(^4\)\\
-    \affaddr{Illinois Informatics Institute\(^1\); Department of Computer Science\(^{2,3}\); School of Information Sciences\(^4\)}\\
-    \email{ikegwu2@illinois.edu\(^1\); hychen2@illinois.edu\(^2\); jcao7@illinois.edu\(^3\); smitad2@illinois.edu\(^4\)}\\
+  \alignauthor Kelechi M. Ikegwu\\
+    \affaddr{Illinois Informatics Institute}\\
+    \email{ikegwu2@illinois.edu}
+  \alignauthor Hsuan-Yu Chen\\
+    \affaddr{Department of Computer Science}\\
+    \email{hychen2@illinois.edu}\\
   \alignauthor Ranjitha Kumar\\
     \affaddr{Department of Computer Science}\\
-    \email{ ranjitha@illinois.edu}\\
+    \email{ jcao7@illinois.edu}\\
+  \alignauthor Smit Desai\\
+    \affaddr{School of Information Sciences}\\
+    \email{smitad2@illinois.edu}\\
+  \alignauthor Ranjitha Kumar\\
+    \affaddr{Department of Computer Science}\\
+    \email{ ranjitha@illinois.edu}\\  
 }
+
+%\author{
+%  \alignauthor Kelechi M. Ikegwu\(^1\); Hsuan-Yu Chen\(^2\); Jiayi Cao\(^3\); Smit Desai\(^4\)\\
+%    \affaddr{Illinois Informatics Institute\(^1\); Department of Computer Science\(^{2,3}\); School of Information Sciences\(^4\)}\\
+%    \email{ikegwu2@illinois.edu\(^1\); hychen2@illinois.edu\(^2\); jcao7@illinois.edu\(^3\); smitad2@illinois.edu\(^4\)}\\
+%  \alignauthor Ranjitha Kumar\\
+%    \affaddr{Department of Computer Science}\\
+%    \email{ ranjitha@illinois.edu}\\
+%}
 
 \maketitle
 
@@ -96,7 +115,7 @@ Generative Adversarial Networks (GAN) have become the de-facto standard for gene
 
 \section{Introduction}
 
-They’re a multitude of application areas where generative models are a promising method for solving certain problems. Generative Adversarial Networks (GAN) \cite{NIPS2014_5423} is a particular model  which is becoming the standard for generative models. However these models generally require a lot of data to generate sufficient results.
+They \textquotesingle re a multitude of application areas where generative models are a promising method for solving certain problems. Generative Adversarial Networks (GAN) \cite{NIPS2014_5423} is a particular model  which is becoming the standard for generative models. However these models generally require a lot of data to generate sufficient results.
 
 As an attempt to solve this problem we propose using the latent spaces from weakly trained GANs with sparse datasets to augment existing data. In the subsequent sections we frame our work with respect to research that has been conducted with GANs, we discuss about our methodology for performing transformations to our data, producing models, and performing an evaluation of our produced models.
 
@@ -160,7 +179,7 @@ To summarize we propose a method for performing data augmentation with 3D voxeli
 
 In the future we plan to explore more sophisticated techniques for generating more data. For example we plan to explore morphing models directly from ShapeNet. 
 
-In addition to this we plan to share our results of training on our generated models to determine if our model learns the latent space of better. We also plan to perform a comparative analysis against training with data from sophisticated morphing techniques and augmented models using our methodology.
+In addition to this we plan to share the results of training on our generated models to determine if our model learned the latent space better than the model that trained on ~10K examples from ShapeNet. We also plan to perform a comparative analysis against a GAN that trains with data from sophisticated morphing techniques and another GAN that used our augmented data from our methodology.
 
 
 \section{Acknowledgments}
