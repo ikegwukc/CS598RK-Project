@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  14 MAY 2017 21:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  14 MAY 2017 22:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -441,7 +441,9 @@ File: figs/table_random.png Graphic file (type png)
 <use figs/table_random.png>
 Package pdftex.def Info: figs/table_random.png used on input line 144.
 (pdftex.def)             Requested size: 204.8567pt x 101.58165pt.
- (./CS598RK-g7-sp17.bbl
+ (./CS598RK-g7-sp17.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 173.
+
 
 Package balance Warning: You have called \balance in second column
 (balance)                Columns might not be balanced.
@@ -450,10 +452,14 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.36 
-      [2 <./figs/table_results.png> <./figs/bad_results.png> <./figs/table_rand
-om.png>])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 173.
+l.173 \end{document}
+                     [2 <./figs/table_results.png> <./figs/bad_results.png> <./
+figs/table_random.png>]
+Overfull \vbox (10.11255pt too high) has occurred while \output is active []
+
+
+Overfull \vbox (11.88745pt too high) has occurred while \output is active []
+
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
@@ -466,6 +472,10 @@ Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 173.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 173.
 Package rerunfilecheck Info: File `CS598RK-g7-sp17.out' has not changed.
 (rerunfilecheck)             Checksum: DD5E2A2F7F37DFDDE4DD3F9568F6985A;406.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 173.
  ) 
 Here is how much of TeX's memory you used:
@@ -475,7 +485,7 @@ Here is how much of TeX's memory you used:
  9625 multiletter control sequences out of 15000+600000
  25023 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,12n,30p,646b,413s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,12n,30p,646b,325s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{section*.11} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -509,7 +519,7 @@ e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2
 -dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2016/texmf-dist/font
 s/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/ur
 w/times/utmri8a.pfb>
-Output written on CS598RK-g7-sp17.pdf (3 pages, 782585 bytes).
+Output written on CS598RK-g7-sp17.pdf (3 pages, 782304 bytes).
 PDF statistics:
  125 PDF objects out of 1000 (max. 8388607)
  104 compressed objects within 2 object streams
